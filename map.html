@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dwarka Properties</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+    .property-image {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([28.5733, 77.0127], 13);
+
+    // Add base map layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Define mock data for properties
+    var properties = [
+      {
+        coordinates: [28.5808, 77.0452],
+        price: '₹3.90 Cr - ₹9.45 Cr',
+        description: 'Vatika Crossover: Location: Sector 82A, Gurgaon. This project offers commercial plots ranging from 1170 to 2835 sq. ft. It is strategically located on NH 8, providing excellent connectivity to Dwarka Expressway.',
+        website: 'https://www.vatikacrossover.com/'
+      },
+      {
+        coordinates: [28.5812, 77.0504],
+        price: '₹2.31 Cr - ₹6.29 Cr',
+        description: 'Oxirich Chintamani: Location: Sector 103, Gurgaon. Comprising 361 units spread over 4.18 acres, this project offers 3 and 4 BHK flats ranging from 1845 to 5033 sq. ft.',
+        website: 'https://www.oxirich.com/'
+      },
+      {
+        coordinates: [28.5756, 77.0586],
+        price: '₹1.90 Cr',
+        description: 'Emaar The 88: Location: Sector 112, Gurgaon. This new launch project includes 2 BHK flats with a carpet area of 1450 sq. ft. It is well-connected to major roads like the Dwarka Expressway and Old Delhi Gurgaon Road.',
+        website: 'https://www.emaar.com/'
+      },
+      {
+        coordinates: [28.5703, 77.0465],
+        price: '₹3.95 Cr - ₹5.50 Cr',
+        description: 'Puri Diplomatic Residences: Location: Sector 111, Gurgaon. Featuring 692 units over 5.41 acres, this project offers 3 and 4 BHK flats ranging from 2282 to 3380 sq. ft. It is well-connected to Dwarka Expressway and Old Delhi Gurgaon Road.',
+        website: 'https://www.puriconstructions.com/'
+      },
+      {
+        coordinates: [28.5721, 77.0344],
+        price: '₹1.00 Cr',
+        description: 'AIPL Joy District: Location: Sector 88, Gurgaon. This project includes 1190 units spread over 10.44 acres, offering retail shops with a carpet area of 600 sq. ft. It is strategically located with good connectivity to Dwarka Expressway, Pataudi Road, and NH 8.',
+        website: 'https://www.aipl.com/'
+      },
+      {
+        coordinates: [28.5768, 77.0407],
+        description: 'M3M Mansion: Location: Sector 113, Gurgaon. Prices not specified, under construction. This luxury residential project offers world-class amenities and is well-located near shopping centers, schools, and hospitals.',
+        website: 'https://www.m3mindia.com/'
+      },
+      {
+        coordinates: [28.5783, 77.0325],
+        price: '₹3.50 Cr onwards',
+        description: 'Elan The Presidential: Location: Sector 106, Gurgaon. This project offers 3, 4, and 5 BHK flats, and is expected to be completed by January 2025. It provides high-end amenities and good connectivity to Dwarka Expressway.',
+        website: 'https://www.elan.com/'
+      },
+      {
+        coordinates: [28.5827, 77.0489],
+        description: 'M3M Dwarka Expressway: Location: Near Dwarka Expressway, Gurgaon. Offers 2, 3, and 4 BHK residences with extensive green spaces and a variety of sports and leisure amenities.',
+        website: 'https://www.m3mproperties.com/'
+      },
+    ];
+
+    // Add markers for each property
+    properties.forEach(function(property) {
+      var marker = L.marker(property.coordinates).addTo(map);
+      marker.bindPopup(`<b>Price:</b> ${property.price}<br><b>Description:</b> ${property.description}<br><a href="${property.website}" target="_blank">Visit Website</a>`);
+    });
+  </script>
+</body>
+</html>

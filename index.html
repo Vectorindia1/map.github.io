@@ -27,32 +27,39 @@
 
     // Define property data
     var properties = [
-      { name: 'Sunrise Apartments', address: '123 Main St, Mumbai', cost: '₹50,00,000', contact: '9876543210', state: 'Maharashtra', coordinates: [19.0760, 72.8777] },
-      { name: 'Ocean View', address: '456 Ocean Rd, Mumbai', cost: '₹75,00,000', contact: '9876543211', state: 'Maharashtra', coordinates: [19.0896, 72.8656] },
-      { name: 'Green Acres', address: '789 Park Ave, Bangalore', cost: '₹60,00,000', contact: '9876543212', state: 'Karnataka', coordinates: [12.9716, 77.5946] },
-      { name: 'Skyline Heights', address: '101 Hill St, Bangalore', cost: '₹80,00,000', contact: '9876543213', state: 'Karnataka', coordinates: [12.9352, 77.6245] },
-      { name: 'Palm Residency', address: '102 Beach Rd, Chennai', cost: '₹55,00,000', contact: '9876543214', state: 'Tamil Nadu', coordinates: [13.0827, 80.2707] },
-      { name: 'Urban Nest', address: '103 City St, Chennai', cost: '₹65,00,000', contact: '9876543215', state: 'Tamil Nadu', coordinates: [13.0604, 80.2496] },
-      { name: 'Royal Residency', address: '104 Palace Rd, Lucknow', cost: '₹45,00,000', contact: '9876543216', state: 'Uttar Pradesh', coordinates: [26.8467, 80.9462] },
-      { name: 'Elite Enclave', address: '105 Kingsway, Lucknow', cost: '₹55,00,000', contact: '9876543217', state: 'Uttar Pradesh', coordinates: [26.8500, 80.9500] },
-      { name: 'Desert Springs', address: '106 Desert Rd, Jaipur', cost: '₹35,00,000', contact: '9876543218', state: 'Rajasthan', coordinates: [26.9124, 75.7873] },
-      { name: 'Pink City Apartments', address: '107 Pink St, Jaipur', cost: '₹40,00,000', contact: '9876543219', state: 'Rajasthan', coordinates: [26.9196, 75.7879] },
-      { name: 'Lakeview Towers', address: '108 Lake Rd, Kolkata', cost: '₹50,00,000', contact: '9876543220', state: 'West Bengal', coordinates: [22.5726, 88.3639] },
-      { name: 'Cityscape Residences', address: '109 Market St, Kolkata', cost: '₹70,00,000', contact: '9876543221', state: 'West Bengal', coordinates: [22.5800, 88.3700] },
-      { name: 'Green Valley', address: '110 Field Rd, Chandigarh', cost: '₹60,00,000', contact: '9876543222', state: 'Punjab', coordinates: [30.7333, 76.7794] },
-      { name: 'Sunny Heights', address: '111 Bright St, Chandigarh', cost: '₹65,00,000', contact: '9876543223', state: 'Punjab', coordinates: [30.7456, 76.7850] },
-      { name: 'Urban Oasis', address: '112 Metro St, Gurgaon', cost: '₹75,00,000', contact: '9876543224', state: 'Haryana', coordinates: [28.4595, 77.0266] },
-      { name: 'Luxury Living', address: '113 Skyline Ave, Gurgaon', cost: '₹85,00,000', contact: '9876543225', state: 'Haryana', coordinates: [28.4675, 77.0300] },
-      { name: 'Heritage Villas', address: '114 Heritage Rd, Ahmedabad', cost: '₹55,00,000', contact: '9876543226', state: 'Gujarat', coordinates: [23.0225, 72.5714] },
-      { name: 'Modern Habitat', address: '115 Tech Park, Ahmedabad', cost: '₹65,00,000', contact: '9876543227', state: 'Gujarat', coordinates: [23.0306, 72.5800] },
-      { name: 'City Lights', address: '116 Central Ave, New Delhi', cost: '₹90,00,000', contact: '9876543228', state: 'Delhi', coordinates: [28.6139, 77.2090] },
-      { name: 'Metro Apartments', address: '117 Urban Rd, New Delhi', cost: '₹95,00,000', contact: '9876543229', state: 'Delhi', coordinates: [28.6200, 77.2167] }
+      { name: 'Sunrise Apartments', address: '123 Main St, Mumbai', cost: '₹50,00,000', contact: '9876543210', state: 'Maharashtra', coordinates: [19.0760, 72.8777], website: 'https://example.com/sunrise-apartments' },
+      { name: 'Ocean View', address: '456 Ocean Rd, Mumbai', cost: '₹75,00,000', contact: '9876543211', state: 'Maharashtra', coordinates: [19.0896, 72.8656], website: 'https://example.com/ocean-view' },
+      { name: 'Green Acres', address: '789 Park Ave, Bangalore', cost: '₹60,00,000', contact: '9876543212', state: 'Karnataka', coordinates: [12.9716, 77.5946], website: 'https://example.com/green-acres' },
+      { name: 'Skyline Heights', address: '101 Hill St, Bangalore', cost: '₹80,00,000', contact: '9876543213', state: 'Karnataka', coordinates: [12.9352, 77.6245], website: 'https://example.com/skyline-heights' },
+      { name: 'Palm Residency', address: '102 Beach Rd, Chennai', cost: '₹55,00,000', contact: '9876543214', state: 'Tamil Nadu', coordinates: [13.0827, 80.2707], website: 'https://example.com/palm-residency' },
+      { name: 'Urban Nest', address: '103 City St, Chennai', cost: '₹65,00,000', contact: '9876543215', state: 'Tamil Nadu', coordinates: [13.0604, 80.2496], website: 'https://example.com/urban-nest' },
+      { name: 'Royal Residency', address: '104 Palace Rd, Lucknow', cost: '₹45,00,000', contact: '9876543216', state: 'Uttar Pradesh', coordinates: [26.8467, 80.9462], website: 'https://example.com/royal-residency' },
+      { name: 'Elite Enclave', address: '105 Kingsway, Lucknow', cost: '₹55,00,000', contact: '9876543217', state: 'Uttar Pradesh', coordinates: [26.8500, 80.9500], website: 'https://example.com/elite-enclave' },
+      { name: 'Desert Springs', address: '106 Desert Rd, Jaipur', cost: '₹35,00,000', contact: '9876543218', state: 'Rajasthan', coordinates: [26.9124, 75.7873], website: 'https://example.com/desert-springs' },
+      { name: 'Pink City Apartments', address: '107 Pink St, Jaipur', cost: '₹40,00,000', contact: '9876543219', state: 'Rajasthan', coordinates: [26.9196, 75.7879], website: 'https://example.com/pink-city-apartments' },
+      { name: 'Lakeview Towers', address: '108 Lake Rd, Kolkata', cost: '₹50,00,000', contact: '9876543220', state: 'West Bengal', coordinates: [22.5726, 88.3639], website: 'https://example.com/lakeview-towers' },
+      { name: 'Cityscape Residences', address: '109 Market St, Kolkata', cost: '₹70,00,000', contact: '9876543221', state: 'West Bengal', coordinates: [22.5800, 88.3700], website: 'https://example.com/cityscape-residences' },
+      { name: 'Green Valley', address: '110 Field Rd, Chandigarh', cost: '₹60,00,000', contact: '9876543222', state: 'Punjab', coordinates: [30.7333, 76.7794], website: 'https://example.com/green-valley' },
+      { name: 'Sunny Heights', address: '111 Bright St, Chandigarh', cost: '₹65,00,000', contact: '9876543223', state: 'Punjab', coordinates: [30.7456, 76.7850], website: 'https://example.com/sunny-heights' },
+      { name: 'Urban Oasis', address: '112 Metro St, Gurgaon', cost: '₹75,00,000', contact: '9876543224', state: 'Haryana', coordinates: [28.4595, 77.0266], website: 'https://example.com/urban-oasis' },
+      { name: 'Luxury Living', address: '113 Skyline Ave, Gurgaon', cost: '₹85,00,000', contact: '9876543225', state: 'Haryana', coordinates: [28.4675, 77.0300], website: 'https://example.com/luxury-living' },
+      { name: 'Heritage Villas', address: '114 Heritage Rd, Ahmedabad', cost: '₹55,00,000', contact: '9876543226', state: 'Gujarat', coordinates: [23.0225, 72.5714], website: 'https://example.com/heritage-villas' },
+      { name: 'Modern Habitat', address: '115 Tech Park, Ahmedabad', cost: '₹65,00,000', contact: '9876543227', state: 'Gujarat', coordinates: [23.0306, 72.5800], website: 'https://example.com/modern-habitat' },
+      { name: 'City Lights', address: '116 Central Ave, New Delhi', cost: '₹90,00,000', contact: '9876543228', state: 'Delhi', coordinates: [28.6139, 77.2090], website: 'https://example.com/city-lights' },
+      { name: 'Metro Apartments', address: '117 Urban Rd, New Delhi', cost: '₹95,00,000', contact: '9876543229', state: 'Delhi', coordinates: [28.6200, 77.2167], website: 'https://example.com/metro-apartments' }
     ];
 
     // Add markers for each property
     properties.forEach(function(property) {
       var marker = L.marker(property.coordinates).addTo(map);
-      marker.bindPopup(`<b>${property.name}</b><br><b>Address:</b> ${property.address}<br><b>Cost:</b> ${property.cost}<br><b>Contact:</b> ${property.contact}<br><b>State:</b> ${property.state}`);
+      marker.bindPopup(`
+        <b>${property.name}</b><br>
+        <b>Address:</b> ${property.address}<br>
+        <b>Cost:</b> ${property.cost}<br>
+        <b>Contact:</b> ${property.contact}<br>
+        <b>State:</b> ${property.state}<br>
+        <a href="${property.website}" target="_blank">Visit Website</a>
+      `);
     });
   </script>
 </body>

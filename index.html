@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dwarka Properties</title>
+  <title>Indian Properties</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     #map {
       height: 600px;
       width: 100%;
-    }
-    .property-image {
-      max-width: 100px;
-      max-height: 100px;
     }
   </style>
 </head>
@@ -22,67 +18,41 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     // Initialize the map
-    var map = L.map('map').setView([28.5733, 77.0127], 13);
+    var map = L.map('map').setView([20.5937, 78.9629], 5); // Centered on India
 
     // Add base map layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Define mock data for properties
+    // Define property data
     var properties = [
-      {
-        coordinates: [28.5808, 77.0452],
-        price: '₹3.90 Cr - ₹9.45 Cr',
-        description: 'Vatika Crossover: Location: Sector 82A, Gurgaon. This project offers commercial plots ranging from 1170 to 2835 sq. ft. It is strategically located on NH 8, providing excellent connectivity to Dwarka Expressway.',
-        website: 'https://www.vatikacrossover.com/'
-      },
-      {
-        coordinates: [28.5812, 77.0504],
-        price: '₹2.31 Cr - ₹6.29 Cr',
-        description: 'Oxirich Chintamani: Location: Sector 103, Gurgaon. Comprising 361 units spread over 4.18 acres, this project offers 3 and 4 BHK flats ranging from 1845 to 5033 sq. ft.',
-        website: 'https://www.oxirich.com/'
-      },
-      {
-        coordinates: [28.5756, 77.0586],
-        price: '₹1.90 Cr',
-        description: 'Emaar The 88: Location: Sector 112, Gurgaon. This new launch project includes 2 BHK flats with a carpet area of 1450 sq. ft. It is well-connected to major roads like the Dwarka Expressway and Old Delhi Gurgaon Road.',
-        website: 'https://www.emaar.com/'
-      },
-      {
-        coordinates: [28.5703, 77.0465],
-        price: '₹3.95 Cr - ₹5.50 Cr',
-        description: 'Puri Diplomatic Residences: Location: Sector 111, Gurgaon. Featuring 692 units over 5.41 acres, this project offers 3 and 4 BHK flats ranging from 2282 to 3380 sq. ft. It is well-connected to Dwarka Expressway and Old Delhi Gurgaon Road.',
-        website: 'https://www.puriconstructions.com/'
-      },
-      {
-        coordinates: [28.5721, 77.0344],
-        price: '₹1.00 Cr',
-        description: 'AIPL Joy District: Location: Sector 88, Gurgaon. This project includes 1190 units spread over 10.44 acres, offering retail shops with a carpet area of 600 sq. ft. It is strategically located with good connectivity to Dwarka Expressway, Pataudi Road, and NH 8.',
-        website: 'https://www.aipl.com/'
-      },
-      {
-        coordinates: [28.5768, 77.0407],
-        description: 'M3M Mansion: Location: Sector 113, Gurgaon. Prices not specified, under construction. This luxury residential project offers world-class amenities and is well-located near shopping centers, schools, and hospitals.',
-        website: 'https://www.m3mindia.com/'
-      },
-      {
-        coordinates: [28.5783, 77.0325],
-        price: '₹3.50 Cr onwards',
-        description: 'Elan The Presidential: Location: Sector 106, Gurgaon. This project offers 3, 4, and 5 BHK flats, and is expected to be completed by January 2025. It provides high-end amenities and good connectivity to Dwarka Expressway.',
-        website: 'https://www.elan.com/'
-      },
-      {
-        coordinates: [28.5827, 77.0489],
-        description: 'M3M Dwarka Expressway: Location: Near Dwarka Expressway, Gurgaon. Offers 2, 3, and 4 BHK residences with extensive green spaces and a variety of sports and leisure amenities.',
-        website: 'https://www.m3mproperties.com/'
-      },
+      { name: 'Sunrise Apartments', address: '123 Main St, Mumbai', cost: '₹50,00,000', contact: '9876543210', state: 'Maharashtra', coordinates: [19.0760, 72.8777] },
+      { name: 'Ocean View', address: '456 Ocean Rd, Mumbai', cost: '₹75,00,000', contact: '9876543211', state: 'Maharashtra', coordinates: [19.0896, 72.8656] },
+      { name: 'Green Acres', address: '789 Park Ave, Bangalore', cost: '₹60,00,000', contact: '9876543212', state: 'Karnataka', coordinates: [12.9716, 77.5946] },
+      { name: 'Skyline Heights', address: '101 Hill St, Bangalore', cost: '₹80,00,000', contact: '9876543213', state: 'Karnataka', coordinates: [12.9352, 77.6245] },
+      { name: 'Palm Residency', address: '102 Beach Rd, Chennai', cost: '₹55,00,000', contact: '9876543214', state: 'Tamil Nadu', coordinates: [13.0827, 80.2707] },
+      { name: 'Urban Nest', address: '103 City St, Chennai', cost: '₹65,00,000', contact: '9876543215', state: 'Tamil Nadu', coordinates: [13.0604, 80.2496] },
+      { name: 'Royal Residency', address: '104 Palace Rd, Lucknow', cost: '₹45,00,000', contact: '9876543216', state: 'Uttar Pradesh', coordinates: [26.8467, 80.9462] },
+      { name: 'Elite Enclave', address: '105 Kingsway, Lucknow', cost: '₹55,00,000', contact: '9876543217', state: 'Uttar Pradesh', coordinates: [26.8500, 80.9500] },
+      { name: 'Desert Springs', address: '106 Desert Rd, Jaipur', cost: '₹35,00,000', contact: '9876543218', state: 'Rajasthan', coordinates: [26.9124, 75.7873] },
+      { name: 'Pink City Apartments', address: '107 Pink St, Jaipur', cost: '₹40,00,000', contact: '9876543219', state: 'Rajasthan', coordinates: [26.9196, 75.7879] },
+      { name: 'Lakeview Towers', address: '108 Lake Rd, Kolkata', cost: '₹50,00,000', contact: '9876543220', state: 'West Bengal', coordinates: [22.5726, 88.3639] },
+      { name: 'Cityscape Residences', address: '109 Market St, Kolkata', cost: '₹70,00,000', contact: '9876543221', state: 'West Bengal', coordinates: [22.5800, 88.3700] },
+      { name: 'Green Valley', address: '110 Field Rd, Chandigarh', cost: '₹60,00,000', contact: '9876543222', state: 'Punjab', coordinates: [30.7333, 76.7794] },
+      { name: 'Sunny Heights', address: '111 Bright St, Chandigarh', cost: '₹65,00,000', contact: '9876543223', state: 'Punjab', coordinates: [30.7456, 76.7850] },
+      { name: 'Urban Oasis', address: '112 Metro St, Gurgaon', cost: '₹75,00,000', contact: '9876543224', state: 'Haryana', coordinates: [28.4595, 77.0266] },
+      { name: 'Luxury Living', address: '113 Skyline Ave, Gurgaon', cost: '₹85,00,000', contact: '9876543225', state: 'Haryana', coordinates: [28.4675, 77.0300] },
+      { name: 'Heritage Villas', address: '114 Heritage Rd, Ahmedabad', cost: '₹55,00,000', contact: '9876543226', state: 'Gujarat', coordinates: [23.0225, 72.5714] },
+      { name: 'Modern Habitat', address: '115 Tech Park, Ahmedabad', cost: '₹65,00,000', contact: '9876543227', state: 'Gujarat', coordinates: [23.0306, 72.5800] },
+      { name: 'City Lights', address: '116 Central Ave, New Delhi', cost: '₹90,00,000', contact: '9876543228', state: 'Delhi', coordinates: [28.6139, 77.2090] },
+      { name: 'Metro Apartments', address: '117 Urban Rd, New Delhi', cost: '₹95,00,000', contact: '9876543229', state: 'Delhi', coordinates: [28.6200, 77.2167] }
     ];
 
     // Add markers for each property
     properties.forEach(function(property) {
       var marker = L.marker(property.coordinates).addTo(map);
-      marker.bindPopup(`<b>Price:</b> ${property.price}<br><b>Description:</b> ${property.description}<br><a href="${property.website}" target="_blank">Visit Website</a>`);
+      marker.bindPopup(`<b>${property.name}</b><br><b>Address:</b> ${property.address}<br><b>Cost:</b> ${property.cost}<br><b>Contact:</b> ${property.contact}<br><b>State:</b> ${property.state}`);
     });
   </script>
 </body>

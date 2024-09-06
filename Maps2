@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Herb Locations Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Herb Locations Across Indian States</h1>
+    
+    <!-- Map Container -->
+    <div id="map"></div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map and set its view
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Herb data
+        var herbs = [
+            // Andhra Pradesh
+            { name: "Neem (Azadirachta indica)", uses: "Antimicrobial, anti-inflammatory", location: "Anantapur, Andhra Pradesh", lat: 14.6819, lng: 77.6006 },
+            { name: "Ashwagandha (Withania somnifera)", uses: "Adaptogen, stress relief", location: "Kurnool, Andhra Pradesh", lat: 15.8281, lng: 78.0373 },
+            { name: "Turmeric (Curcuma longa)", uses: "Anti-inflammatory, antioxidant", location: "Guntur, Andhra Pradesh", lat: 16.3067, lng: 80.4365 },
+
+            // Arunachal Pradesh
+            { name: "Ginger (Zingiber officinale)", uses: "Aids digestion, anti-inflammatory", location: "Itanagar, Arunachal Pradesh", lat: 27.0844, lng: 93.6053 },
+            { name: "Aloe Vera (Aloe barbadensis)", uses: "Skin healing, digestive aid", location: "West Kameng, Arunachal Pradesh", lat: 27.3347, lng: 92.4159 },
+
+            // Assam
+            { name: "Brahmi (Bacopa monnieri)", uses: "Cognitive enhancement, reduces anxiety", location: "Kamrup, Assam", lat: 26.1052, lng: 91.6400 },
+            { name: "Tulsi (Ocimum sanctum)", uses: "Immunity booster, respiratory relief", location: "Nagaon, Assam", lat: 26.3464, lng: 92.6833 },
+
+            // Bihar
+            { name: "Guduchi (Tinospora cordifolia)", uses: "Immunomodulator, detoxifier", location: "Nalanda, Bihar", lat: 25.1357, lng: 85.4438 },
+            { name: "Haritaki (Terminalia chebula)", uses: "Digestive health, detoxification", location: "Gaya, Bihar", lat: 24.7955, lng: 85.0002 },
+
+            // Chhattisgarh
+            { name: "Arjun (Terminalia arjuna)", uses: "Cardiovascular health", location: "Raipur, Chhattisgarh", lat: 21.2514, lng: 81.6296 },
+            { name: "Amla (Phyllanthus emblica)", uses: "Rich in Vitamin C, boosts immunity", location: "Bilaspur, Chhattisgarh", lat: 22.0796, lng: 82.1391 },
+
+            // Delhi
+            { name: "Neem (Azadirachta indica)", uses: "Antimicrobial, skin care", location: "Lodhi Garden, Delhi", lat: 28.5934, lng: 77.2273 },
+            { name: "Ashwagandha (Withania somnifera)", uses: "Stress relief, enhances stamina", location: "Garden of Five Senses, Delhi", lat: 28.5206, lng: 77.1846 },
+
+            // Goa
+            { name: "Kokum (Garcinia indica)", uses: "Aids digestion, reduces inflammation", location: "Sattari, Goa", lat: 15.5472, lng: 74.0031 },
+            { name: "Moringa (Moringa oleifera)", uses: "Nutrient-rich, boosts immunity", location: "Bicholim, Goa", lat: 15.5955, lng: 73.9535 },
+
+            // Gujarat
+            { name: "Neem (Azadirachta indica)", uses: "Natural pesticide, antimicrobial", location: "Rajkot, Gujarat", lat: 22.3039, lng: 70.8022 },
+            { name: "Tulsi (Ocimum sanctum)", uses: "Respiratory health, immunity booster", location: "Surat, Gujarat", lat: 21.1702, lng: 72.8311 },
+            { name: "Shankhapushpi (Convolvulus pluricaulis)", uses: "Enhances memory, reduces anxiety", location: "Vadodara, Gujarat", lat: 22.3072, lng: 73.1812 },
+
+            // Haryana
+            { name: "Brahmi (Bacopa monnieri)", uses: "Cognitive enhancement, stress reduction", location: "Faridabad, Haryana", lat: 28.4089, lng: 77.3178 },
+            { name: "Amla (Phyllanthus emblica)", uses: "Rich in Vitamin C, boosts immunity", location: "Hisar, Haryana", lat: 29.1492, lng: 75.7217 },
+
+            // Himachal Pradesh
+            { name: "Sarpagandha (Rauvolfia serpentina)", uses: "Antihypertensive, anxiety relief", location: "Kangra, Himachal Pradesh", lat: 32.0998, lng: 76.2691 },
+            { name: "Yashtimadhu (Glycyrrhiza glabra)", uses: "Respiratory health, digestive aid", location: "Mandi, Himachal Pradesh", lat: 31.5892, lng: 76.9182 },
+
+            // Jammu and Kashmir
+            { name: "Shatavar (Asparagus racemosus)", uses: "Women's health, hormonal balance", location: "Udhampur, Jammu and Kashmir", lat: 32.9337, lng: 75.1344 },
+            { name: "Sarpagandha (Rauvolfia serpentina)", uses: "Blood pressure regulation", location: "Srinagar, Jammu and Kashmir", lat: 34.0837, lng: 74.7973 },
+
+            // Jharkhand
+            { name: "Arjun (Terminalia arjuna)", uses: "Cardiovascular health", location: "Ranchi, Jharkhand", lat: 23.3441, lng: 85.3096 },
+            { name: "Ashwagandha (Withania somnifera)", uses: "Stress relief, enhances stamina", location: "Dhanbad, Jharkhand", lat: 23.7957, lng: 86.4304 },
+
+            // Karnataka
+            { name: "Turmeric (Curcuma longa)", uses: "Anti-inflammatory, antioxidant", location: "Mysore, Karnataka", lat: 12.2958, lng: 76.6394 },
+            { name: "Neem (Azadirachta indica)", uses: "Antimicrobial, skin care", location: "Bangalore, Karnataka", lat: 12.9716, lng: 77.5946 },
+            { name: "Ashwagandha (Withania somnifera)", uses: "Adaptogen, stress relief", location: "Dharwad, Karnataka", lat: 15.4589, lng: 75.0078 }
+        ];
+
+        // Add markers for each herb
+        herbs.forEach(function(herb) {
+            L.marker([herb.lat, herb.lng]).addTo(map)
+                .bindPopup("<b>" + herb.name + "</b><br>" + herb.uses + "<br>" + herb.location);
+        });
+
+    </script>
+</body>
+</html>
